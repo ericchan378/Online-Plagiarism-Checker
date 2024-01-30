@@ -75,7 +75,7 @@ function callGoogleAPI($queryString){
 
 	//Encode the query for it to be passed into the API.
 	$q = urlencode($queryString);
-	$google = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDrRpAfprjN8C4M16Z_cGXwMLrDGMuFMiA&cx=014175807902713496140:lutx1h8_kos&q=" . $q;
+	$google = "https://www.googleapis.com/customsearch/v1?key=YourKeyHere" . $q;
 
 	//Get the API response as a JSON object.
 	$body = file_get_contents($google);
