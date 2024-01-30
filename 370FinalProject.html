@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+</head>
+
+<body>
+
+	<h1> Plagiarism Checker </h1>
+
+	<h3> Choose a file to check for plagiarism. </h3>
+	<!-- Creating the file upload button which will only accept .txt files. -->
+	<input type='file'  id= "fileInput" accept = 'text/plain' onchange = 'chooseFile(event)'>
+
+	<h3> Enter text to check for plagiarism. </h3>
+	<!-- Creating the text box and the submit button in a form which will 
+	submit the contents of the text box to the php script for processing. -->
+	<form method="post" action="checker.php">
+		<textarea rows="40" cols="175" name="text" id ="text"></textarea><br>
+		<input type="submit" value="Check"><br>
+	</form>
+
+	<script>
+		//The function "chooseFile" will be invoked when the user presses on the file upload button.
+		var chooseFile = function(event){
+
+			//The variable "input" will contain the .txt file that was uploaded.
+			// The variable "fr" is a new instantiation of the FileReader object
+			var input = event.target; 
+			var fr = new FileReader();
+
+			//This function will run when the file has been chosen by the user and will 
+			//place the contents of the file chosen into the text box provided.
+			fr.onload = function(){
+
+				//The variable "text" will contain the contents of the .txt file that was uploaded.
+				var text = fr.result;
+				//This will place the contents of the uploaded file into the text box provided.
+				document.getElementById("text").value = text;
+
+			}
+			//This will call the above method on the file chosen by the user
+			// extracting the text from the file.
+			fr.readAsText(input.files[0]);
+		}
+	</script>
+
+</body>
+</html>
